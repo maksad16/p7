@@ -1,0 +1,15 @@
+stages:
+  ingest:
+    cmd: python3 src/ingest.py
+    deps:
+      - src/ingest.py
+    outs:
+      - data/raw/data.csv
+
+  clean:
+    cmd: python3 src/clean.py
+    deps:
+      - src/clean.py
+      - data/raw/data.csv
+    outs:
+      - data/processed/clean_data.csv

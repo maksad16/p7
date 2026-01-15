@@ -1,0 +1,30 @@
+schema: '2.0'
+stages:
+  ingest:
+    cmd: python3 src/ingest.py
+    deps:
+    - path: src/ingest.py
+      hash: md5
+      md5: 6a64253a422dc6dabf228e14ecdff2ae
+      size: 335
+    outs:
+    - path: data/raw/data.csv
+      hash: md5
+      md5: dc3a36b2a06f7d7d777794a9ca7c9d6b
+      size: 55
+  clean:
+    cmd: python3 src/clean.py
+    deps:
+    - path: data/raw/data.csv
+      hash: md5
+      md5: dc3a36b2a06f7d7d777794a9ca7c9d6b
+      size: 55
+    - path: src/clean.py
+      hash: md5
+      md5: 3e52fcdabccfaf32051229b6da5c5281
+      size: 272
+    outs:
+    - path: data/processed/clean_data.csv
+      hash: md5
+      md5: ae3ad3e368b85185898f38decdb0841e
+      size: 51
